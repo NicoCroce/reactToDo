@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, UI } from 'react';
 
 class TodoForm extends Component {
     constructor() {
@@ -55,15 +55,10 @@ class TodoForm extends Component {
             });
     }
 
-    getClass = () => {
-        if (this.state.openForm) { return ''; }
-        else { return ' hidden-form'; }
-    }
-
     render() {
         return (
             <div className="col-md-4" >
-                <div className={'card card-form' + this.getClass()}>
+                <div className={'card card-form' + UI.class({'hidden-form': !this.state.openForm})}>
                     <button className="addTodo" onClick={this.toggleForm}>{this.state.openForm ? '-' : '+'}</button>
                     {/* <h2>{ this.state.isEditing ? 'Modifica la tarea' : 'Crea la tarea' }</h2> */}
                     <form action="" className="card-body" onSubmit={this.handleSubmit}>

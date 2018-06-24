@@ -1,12 +1,10 @@
-import UI from './helper';
+import './helper';
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import TodoForm from './components/TodoForm';
 import Card from './components/Card';
 
 import { todos } from './todos.json';
-console.log(todos);
 
 class App extends Component {
 	constructor() {
@@ -52,10 +50,14 @@ class App extends Component {
 					<div className="row mt-4">
 						<TodoForm onAddToDo={this.handleAppToDo} initialState={this.state.initialState} />
 
-						{this.state.todos.map((task, index) => {
-							//console.log(task);
-							return <Card key={index} task={task} index={index} removeTodo={this.handleRemove} editTodo={this.handleEdit} />
-						})}
+						
+						{
+							(() => {
+								for(let key in this.state.todos) {
+									<Card task={this.state.todos[key]} index={key} removeTodo={this.handleRemove} editTodo={this.handleEdit} />
+								}
+							})()
+						}
 
 					</div>
 				</div>

@@ -1,23 +1,22 @@
 {
-    "todos": [
-        {
+    "todos": {
+        "0": {
             "title": "Tarea 1",
             "responsible": "Nico",
             "description": "Lorem impsum",
             "priority": "low"
         },
-        {
+        "1": {
             "title": "Tarea 2",
             "responsible": "Fede",
             "description": "Lorem impsum asdasd ",
             "priority": "medium"
         },
-        {
+        "2": {
             "title": "Tarea 3",
             "responsible": "PAblo",
             "description": "Lorem impsum 123 ",
             "priority": "hight"
         }
-        
-    ]
+    }
 }

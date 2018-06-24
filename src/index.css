@@ -1,9 +1,0 @@
-body {
-  margin: 0; padding: 0; font-family: sans-serif; background: rgb(170, 170, 170);
-}
-
-.card-form { transition: all .3s ease; max-height: 500px; max-width: 400px; overflow: hidden;  }
-.card-form.hidden-form { border-radius: 50%; max-height: 50px !important; max-width: 50px !important; }
-.card-form .addTodo { width: 50px; height: 50px; background: none; border: 0; outline: 0; position: relative; text-align: center; left: -1px; font-size: 26px; color: grey; }
-.card-form form { transition: all .3s ease; max-height: 400px; }
-.card-form.hidden-form form { max-height: 0; padding: 0; }

@@ -4,34 +4,38 @@ class TodoForm extends Component {
     constructor() {
         super();
         this.state = {
-            task: {
-                title: '',
-                responsible: '',
-                description: '',
+            todoTask: {
+                title: 'asd',
+                responsible: 'qwe',
+                description: 'rrrr',
                 priority: 'low'
             },
             openForm: false
         };
+        this.handleInput = this.handleInput.bind(this);
     }
 
     handleInput = (e) => {
         const { value, name } = e.target;
+        let newTask = Object.assign({}, this.state.todoTask);
+        newTask[name] = value;
+        
         this.setState({
-            task: {
-                [name]: value
-            }
+            todoTask: newTask
         });
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.onAddToDo(this.state.task);
+        this.props.onAddToDo(this.state.todoTask);
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log('Entra')
+        console.log(nextProps)
         if (nextProps.initialState) {
             this.setState({
-                task: {
+                todoTask: {
                     title: nextProps.initialState.title,
                     responsible: nextProps.initialState.responsible,
                     description: nextProps.initialState.description,
@@ -43,15 +47,17 @@ class TodoForm extends Component {
     }
 
     toggleForm = () => {
+        let clearTask = Object.assign({}, this.state.todoTask);
+        clearTask = {
+            title: '',
+            responsible: '',
+            description: '',
+            priority: 'low'
+        };
         return this.setState({ 
             openForm: (() => !this.state.openForm)(),
-            task: {
-                title: '',
-                responsible: '',
-                description: '',
-                priority: 'low'
-            }
-            });
+            todoTask: clearTask
+        });
     }
 
     render() {
@@ -62,16 +68,16 @@ class TodoForm extends Component {
                     {/* <h2>{ this.state.isEditing ? 'Modifica la tarea' : 'Crea la tarea' }</h2> */}
                     <form action="" className="card-body" onSubmit={this.handleSubmit}>
                         <div className="form-group">
-                            <input name="title" type="text" onChange={this.handleInput} className="form-control" placeholder="Titulo" value={this.state.task.title} />
+                            <input name="title" type="text" onChange={this.handleInput} className="form-control" placeholder="Titulo" value={this.state.todoTask.title} />
                         </div>
                         <div className="form-group">
-                            <input name="responsible" type="text" onChange={this.handleInput} className="form-control" placeholder="Responsable" value={this.state.task.responsible} />
+                            <input name="responsible" type="text" onChange={this.handleInput} className="form-control" placeholder="Responsable" value={this.state.todoTask.responsible} />
                         </div>
                         <div className="form-group">
-                            <input name="description" type="text" onChange={this.handleInput} className="form-control" placeholder="Descripcion" value={this.state.task.description} />
+                            <input name="description" type="text" onChange={this.handleInput} className="form-control" placeholder="Descripcion" value={this.state.todoTask.description} />
                         </div>
                         <div className="form-group">
-                            <select className="form-control" name="priority" onChange={this.handleInput} value={this.state.task.priority}>
+                            <select className="form-control" name="priority" onChange={this.handleInput} value={this.state.todoTask.priority}>
                                 <option>Low</option>
                                 <option>Medium</option>
                                 <option>Hight</option>

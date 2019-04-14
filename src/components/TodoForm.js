@@ -17,8 +17,7 @@ class TodoForm extends Component {
 
     handleInput = (e) => {
         const { value, name } = e.target;
-        let newTask = Object.assign({}, this.state.todoTask);
-        newTask[name] = value;
+        let newTask = {...this.state.todoTask, [name]: value}
         
         this.setState({
             todoTask: newTask
@@ -31,8 +30,6 @@ class TodoForm extends Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log('Entra')
-        console.log(nextProps)
         if (nextProps.initialState) {
             this.setState({
                 todoTask: {

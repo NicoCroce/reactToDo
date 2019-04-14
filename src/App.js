@@ -1,8 +1,8 @@
 import './helper';
 import React, { Component } from 'react';
 import './App.scss';
-import TodoForm from './components/TodoForm';
-import Card from './components/Card';
+import Header from './components/Header/Header';
+import TodoList from './components/TodoList/TodoList';
 
 import { todos } from './todos.json';
 
@@ -46,24 +46,14 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<nav className="navbar navbar-dark bg-dark">
-					<a href="" className="text-white">
-						TASKS
-						<span className="badge badge-pill badge-light ml-2"> {Object.keys(this.state.todos).length} </span>
-					</a>
-				</nav>
-				{/* <img src={logo} className="App-logo" alt="logo" /> */}
-				<div className="container">
-					<div className="row mt-4">
-						<TodoForm onAddToDo={this.handleAppToDo} initialState={this.state.initialState} />
-						{
-							Object.keys(this.state.todos).map((key) => {
-								return <Card key={key} task={this.state.todos[key]} index={key} removeTodo={this.handleRemove} editTodo={this.handleEdit} />
-							})
-						}
-
-					</div>
-				</div>
+				<Header todoCount={ Object.keys(this.state.todos).length } ></Header>
+				<TodoList
+					handleAppToDo = { this.handleAppToDo }
+					initialState = { this.state.initialState }
+					todos = { this.state.todos }
+					handleRemove = { this.handleRemove }
+					handleEdit = { this.handleEdit }
+				/>				
 			</div>
 		);
 	}

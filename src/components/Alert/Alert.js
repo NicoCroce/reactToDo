@@ -3,23 +3,17 @@ import { connect } from 'react-redux';
 import Header from '../Header/Header';
 import { addToDo } from '../../actions';
 
-export class HeaderContainer extends Component {
+export class Alert extends Component {
 
   render() {
     return (
-      <Header todoCount={this.props.counter} ></Header>
+      <h4>Alerta</h4>
     )
   }
 }
-
-const mapDispatchToProps = dispatch => {
-  return {
-      addToDo: value => dispatch(addToDo(value))
-  }
-};
 
 const mapStateToProps = state => {
   return { counter: Object.keys(state.todos).length }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HeaderContainer);
+export default connect(mapStateToProps, null)(Alert);

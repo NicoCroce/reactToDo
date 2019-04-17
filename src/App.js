@@ -2,8 +2,8 @@ import './helper';
 import React, { Component } from 'react';
 import './App.scss';
 import MainContainerApp from './components/containers/MainContainerApp';
-import { HeaderContainer } from './components/containers/HeaderContainer';
-
+import HeaderContainer from './components/containers/HeaderContainer';
+import Alert from './components/Alert/Alert';
 class App extends Component {
 	constructor() {
 		super();
@@ -14,6 +14,7 @@ class App extends Component {
 			<div>
 				<HeaderContainer />
 				<MainContainerApp />
+				<Alert />
 			</div>
 		);
 	}

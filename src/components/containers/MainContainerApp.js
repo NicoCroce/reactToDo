@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TodoList from '../TodoList/TodoList';
 import { todos } from './../../todos.json';
-import { addToDo } from '../../actions';
+import { addToDo, loadTodos } from '../../actions';
 
 class MainContainerApp extends Component {
     constructor() {
@@ -61,7 +61,8 @@ class MainContainerApp extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addToDo: value => dispatch(addToDo(value))
+        addToDo: value => dispatch(addToDo(value)),
+        loadTodos: value => dispatch(loadTodos(value))
     }
 };
 

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from './Header/Header';
-import TodoList from './TodoList/TodoList';
-import { todos } from '../todos.json';
-import { addToDo } from '../actions';
-
+import TodoList from '../TodoList/TodoList';
+import { todos } from './../../todos.json';
+import { addToDo } from '../../actions';
 
 class MainContainerApp extends Component {
     constructor() {
@@ -49,7 +47,6 @@ class MainContainerApp extends Component {
     render() {
         return (
             <div className="App" >
-                <Header todoCount={Object.keys(this.state.todos).length} ></Header>
                 <TodoList
                     handleAppToDo={this.handleAppToDo}
                     initialState={this.state.initialState}
